@@ -1,0 +1,1 @@
+/home/wisdomwolf/.config/fisherman/fastdir/functions/__fastdir_cd_num.fish

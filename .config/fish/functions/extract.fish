@@ -1,0 +1,1 @@
+/home/wisdomwolf/.config/fisherman/extract/functions/extract.fish
