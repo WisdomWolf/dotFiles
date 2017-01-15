@@ -166,7 +166,7 @@ function pinger() {
 
 # Create GitHub Repo
 function create_github_repo() {
-	local token='af31fabebc4fd696f7bf34aa2d56b876d53b9e62'
+	local token="$GITHUB_TOKEN"
 	local username='WisdomWolf'
 	if [ -z "$1" ] ; then
 		echo "Usage: create_github_repo reponame"
