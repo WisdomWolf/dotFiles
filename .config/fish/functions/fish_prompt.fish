@@ -1,0 +1,1 @@
+/home/wisdomwolf/.config/fish/functions/fish_prompt.fish##Linux.wisdom-dellbuntu
