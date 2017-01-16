@@ -1,1 +1,1 @@
-/home/wisdomwolf/.config/fisherman/agnoster/fish_prompt.fish
+/home/wisdomwolf/.config/fish/functions/fish_prompt.fish##Linux.WISDOM-DEVBUNTUX
