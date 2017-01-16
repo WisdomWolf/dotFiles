@@ -1,1 +1,1 @@
-/home/wisdomwolf/.config/fisherman/agnoster/fish_right_prompt.fish
+/home/wisdomwolf/.config/fish/functions/fish_right_prompt.fish##Linux.wisdom-dellbuntu
