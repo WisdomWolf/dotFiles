@@ -8,3 +8,5 @@ if status --is-login
     echo "tmux failed to start; using plain fish shell"
   end
 end
+
+[ -e ~/.dircolors ]; and eval (dircolors -b ~/.dircolors)
