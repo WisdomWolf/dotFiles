@@ -1,6 +1,3 @@
-set -x PEARL_ROOT /home/wisdomwolf/.local/share/pearl
-source /home/wisdomwolf/.local/share/pearl/boot/fish/pearl.fish
-
 if status --is-login
   set PPID (echo (ps --pid %self -o ppid --no-headers) | xargs)
   if ps --pid $PPID | grep ssh
