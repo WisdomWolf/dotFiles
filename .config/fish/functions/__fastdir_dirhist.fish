@@ -1,1 +1,1 @@
-/home/wisdomwolf/.config/fisherman/fastdir/functions/__fastdir_dirhist.fish
+../../fisherman/fastdir/functions/__fastdir_dirhist.fish

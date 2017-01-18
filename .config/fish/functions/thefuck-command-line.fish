@@ -1,1 +1,1 @@
-/home/wisdomwolf/.config/fisherman/thefuck/functions/thefuck-command-line.fish
+../../fisherman/thefuck/functions/thefuck-command-line.fish

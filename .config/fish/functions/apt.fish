@@ -1,1 +1,1 @@
-/home/pi/.config/fisherman/apt/functions/apt.fish
+../../fisherman/apt/functions/apt.fish
