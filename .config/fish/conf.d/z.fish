@@ -1,1 +1,1 @@
-/home/wisdomwolf/.config/fisherman/z/conf.d/z.fish
+../../fisherman/z/conf.d/z.fish
