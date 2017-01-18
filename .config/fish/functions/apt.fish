@@ -1,1 +1,1 @@
-/home/wisdomwolf/.config/fisherman/apt/functions/apt.fish
+/home/pi/.config/fisherman/apt/functions/apt.fish
