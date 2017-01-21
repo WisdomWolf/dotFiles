@@ -13,7 +13,15 @@
 # set -g theme_hide_hostname no
 # set -g default_user your_normal_user
 
+### Notify on long command completion
 
+# If commands runs >= 10 seconds, notify user on completion
+if test $CMD_DURATION
+    if test $CMD_DURATION -gt (math "1000 * 10")
+        set secs (math "$CMD_DURATION / 1000")
+        [ -e /usr/local/bin/noti ]; or [ -e /bin/noti ]; or [ -e /usr/bin/noti ]; and noti -t "$history[1] on (hostname)" -m "Returned $status, took $secs seconds"
+    end
+end
 
 set -g current_bg NONE
 set segment_separator \uE0B0
@@ -195,7 +203,6 @@ end
 function svn_get_revision -d "get the current revision number"
   svn info 2> /dev/null | sed -n 's/Revision:\ //p'
 end
-
 
 function prompt_status -d "the symbols for a non zero exit status, root and background jobs"
     if [ $RETVAL -ne 0 ]

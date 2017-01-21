@@ -1,1 +1,1 @@
-/home/wisdomwolf/.config/fisherman/spin/spin.fish
+../../fisherman/spin/spin.fish
