@@ -1,0 +1,1 @@
+/home/wisdomwolf/.config/fish/functions/fish_right_prompt.fish##Linux.WISDOM-DEVBUNTUX
