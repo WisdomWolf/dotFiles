@@ -1,1 +1,1 @@
-/home/wisdomwolf/.config/fisherman/getopts/getopts.fish
+../../fisherman/getopts/getopts.fish
