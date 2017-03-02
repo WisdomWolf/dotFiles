@@ -1,1 +1,1 @@
-/home/wisdomwolf/.config/fisherman/virtualfish/init.fish
+/cygdrive/c/Users/wisdo/.config/fisherman/virtualfish/init.fish
