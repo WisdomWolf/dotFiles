@@ -1,1 +1,0 @@
-../../fisherman/apt/functions/apt.fish

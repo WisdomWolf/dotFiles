@@ -1,1 +1,1 @@
-../../fisherman/ssh-agent/functions/__ssh_agent_start.fish
+/home/wisdomwolf/.config/fisherman/ssh-agent/functions/__ssh_agent_start.fish
