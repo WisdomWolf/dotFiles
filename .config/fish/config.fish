@@ -8,4 +8,4 @@ end
 
 [ -e ~/.dircolors ]; and eval (dircolors -b ~/.dircolors)
 dir_colors ~/.dircolors.ansi-dark
-
+set -x SHELL (which fish)
