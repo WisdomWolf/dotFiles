@@ -1,3 +1,3 @@
-function exit --shadow-builtin
-	exiter
+function exit --description 'alias exit=exiter'
+	exiter  $argv;
 end
