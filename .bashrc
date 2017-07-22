@@ -9,7 +9,7 @@
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
-
+exec fish
 
 export MYPS='$(echo -n "${PWD/#$HOME/~}" | awk -F "/" '"'"'{
 if (length($0) > 14) { if (NF>4) print $1 "/" $2 "/.../" $(NF-1) "/" $NF;
