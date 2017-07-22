@@ -7,3 +7,4 @@ if status --is-login
 end
 
 [ -e ~/.dircolors ]; and eval (dircolors -b ~/.dircolors)
+set -x SHELL (which fish)
