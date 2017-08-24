@@ -1,3 +1,4 @@
+# Defined in /tmp/fish.va1SNY/list-gitlab.fish @ line 2
 function list-gitlab
-	curl --header "PRIVATE-TOKEN: $GITLAB_TOKEN" "https://gitlab.com/api/v4/users/wisdomwolf/projects?simple=true" -s | jq -r '.[] | "\(.id)\t\(.name)\t\t\t\(.web_url)"'
+	__get-gitlab-projects | jq -r '.[] | "\(.id)\t\(.name)\t\t\t\(.web_url)"'
 end
