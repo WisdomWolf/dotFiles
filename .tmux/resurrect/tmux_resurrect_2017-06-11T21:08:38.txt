@@ -1,0 +1,3 @@
+pane	remote	1	:fish	1	:*	1	:/home/wisdomwolf/.docker/portainerX/data	1	fish	:sudo fish
+window	remote	1	1	:*	ae5d,80x23,0,0,0
+state	remote	

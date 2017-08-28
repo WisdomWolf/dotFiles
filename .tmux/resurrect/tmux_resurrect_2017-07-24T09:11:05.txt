@@ -1,0 +1,3 @@
+pane	remote	2	:bash	1	:*	1	:/home/wisdomwolf/Dropbox-Uploader	1	bash	:bash ./dropbox_uploader.sh
+window	remote	2	1	:*	cdbe,154x48,0,0,1
+state	remote	

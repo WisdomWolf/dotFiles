@@ -1,0 +1,7 @@
+pane	remote	1	:fish	0	:	1	:/home/wisdomwolf/.config/fish	1	fish	:
+pane	remote	2	:fish	1	:*	1	:/home/wisdomwolf/Python-2.6.5	1	fish	:fish
+pane	remote	3	:fish	0	:-	1	:/home/wisdomwolf	1	fish	:
+window	remote	1	0	:	c3fd,149x26,0,0,0
+window	remote	2	1	:*	c3fe,149x26,0,0,1
+window	remote	3	0	:-	c3ff,149x26,0,0,2
+state	remote	

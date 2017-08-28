@@ -1,0 +1,36 @@
+pane	remote	1	:python	0	:	1	:/home/wisdomwolf/life360_mqtt_bridge	1	python	:python life360_mqtt.py
+pane	remote	1	:python	0	:	1	:/home/wisdomwolf/life360_mqtt_bridge	1	python	:python life360_mqtt.py
+pane	remote	1	:python	0	:	1	:/home/wisdomwolf/life360_mqtt_bridge	1	python	:python life360_mqtt.py
+pane	remote	2	:fish	0	:-	1	:/usr/bin	1	fish	:
+pane	remote	2	:fish	0	:-	1	:/usr/bin	1	fish	:
+pane	remote	2	:fish	0	:-	1	:/usr/bin	1	fish	:
+pane	remote	3	:python3	0	:	1	:/home/wisdomwolf/pgoapi	1	python3	:/home/wisdomwolf/.virtualenvs/pgoapi/bin/python3 /home/wisdomwolf/.virtualenvs/pgoapi/bin/bpython
+pane	remote	3	:python3	0	:	1	:/home/wisdomwolf/pgoapi	1	python3	:/home/wisdomwolf/.virtualenvs/pgoapi/bin/python3 /home/wisdomwolf/.virtualenvs/pgoapi/bin/bpython
+pane	remote	4	:mosquitto_sub	0	:	1	:/home/wisdomwolf/life360_mqtt_bridge	1	mosquitto_sub	:mosquitto_sub -h developingwisdom.org -v -t owntracks/#
+tee -a /home/wisdomwolf/life360_mqtt_bridge/mosquitto_sub.log
+pane	remote	3	:python3	0	:	1	:/home/wisdomwolf/pgoapi	1	python3	:/home/wisdomwolf/.virtualenvs/pgoapi/bin/python3 /home/wisdomwolf/.virtualenvs/pgoapi/bin/bpython
+pane	remote	4	:mosquitto_sub	0	:	1	:/home/wisdomwolf/life360_mqtt_bridge	1	mosquitto_sub	:mosquitto_sub -h developingwisdom.org -v -t owntracks/#
+tee -a /home/wisdomwolf/life360_mqtt_bridge/mosquitto_sub.log
+pane	remote	4	:mosquitto_sub	0	:	1	:/home/wisdomwolf/life360_mqtt_bridge	1	mosquitto_sub	:mosquitto_sub -h developingwisdom.org -v -t owntracks/#
+tee -a /home/wisdomwolf/life360_mqtt_bridge/mosquitto_sub.log
+pane	remote	5	:fish	1	:*	1	:/home/wisdomwolf/Hackemon	1	fish	:
+pane	remote	5	:fish	1	:*	1	:/home/wisdomwolf/Hackemon	1	fish	:
+window	remote	1	0	:	c91d,76x48,0,0,0
+window	remote	2	0	:-	bd20,76x45,0,0,3
+window	remote	3	0	:	c921,76x48,0,0,4
+window	remote	4	0	:	cdbe,154x48,0,0,1
+window	remote	5	1	:*	c922,76x48,0,0,5
+window	remote	1	0	:	c91d,76x48,0,0,0
+window	remote	2	0	:-	bd20,76x45,0,0,3
+window	remote	3	0	:	c921,76x48,0,0,4
+window	remote	4	0	:	cdbe,154x48,0,0,1
+window	remote	5	1	:*	c922,76x48,0,0,5
+state	remote	
+state	remote	
+pane	remote	5	:fish	1	:*	1	:/home/wisdomwolf/Hackemon	1	fish	:
+window	remote	1	0	:	c91d,76x48,0,0,0
+window	remote	2	0	:-	bd20,76x45,0,0,3
+window	remote	3	0	:	c921,76x48,0,0,4
+window	remote	4	0	:	cdbe,154x48,0,0,1
+window	remote	5	1	:*	c922,76x48,0,0,5
+state	remote	
