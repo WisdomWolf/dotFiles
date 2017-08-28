@@ -1,0 +1,70 @@
+pane	remote	1	:python3.6	0	:	1	:/home/wisdomwolf	1	python3.6	:/usr/local/bin/python3.6 /usr/local/bin/bpython
+pane	remote	1	:python3.6	0	:	1	:/home/wisdomwolf	1	python3.6	:/usr/local/bin/python3.6 /usr/local/bin/bpython
+pane	remote	1	:python3.6	0	:	1	:/home/wisdomwolf	1	python3.6	:/usr/local/bin/python3.6 /usr/local/bin/bpython
+pane	remote	1	:python3.6	0	:	1	:/home/wisdomwolf	1	python3.6	:/usr/local/bin/python3.6 /usr/local/bin/bpython
+pane	remote	2	:fish	0	:	1	:/home/wisdomwolf	1	fish	:
+pane	remote	2	:fish	0	:	1	:/home/wisdomwolf	1	fish	:
+pane	remote	2	:fish	0	:	1	:/home/wisdomwolf	1	fish	:
+pane	remote	1	:python3.6	0	:	1	:/home/wisdomwolf	1	python3.6	:/usr/local/bin/python3.6 /usr/local/bin/bpython
+pane	remote	2	:fish	0	:	1	:/home/wisdomwolf	1	fish	:
+pane	remote	3	:python	0	:-	1	:/home/wisdomwolf/life360_mqtt_bridge	1	python	:python life360_mqtt.py
+pane	remote	3	:python	0	:-	1	:/home/wisdomwolf/life360_mqtt_bridge	1	python	:python life360_mqtt.py
+pane	remote	3	:python	0	:-	1	:/home/wisdomwolf/life360_mqtt_bridge	1	python	:python life360_mqtt.py
+pane	remote	2	:fish	0	:	1	:/home/wisdomwolf	1	fish	:
+pane	remote	3	:python	0	:-	1	:/home/wisdomwolf/life360_mqtt_bridge	1	python	:python life360_mqtt.py
+pane	remote	4	:vim	1	:*	1	:/home/wisdomwolf/gamefly_calc	1	vim	:vim gamefly_calc.py
+pane	remote	4	:vim	1	:*	1	:/home/wisdomwolf/gamefly_calc	1	vim	:vim gamefly_calc.py
+pane	remote	4	:vim	1	:*	1	:/home/wisdomwolf/gamefly_calc	1	vim	:vim gamefly_calc.py
+pane	remote	3	:python	0	:-	1	:/home/wisdomwolf/life360_mqtt_bridge	1	python	:python life360_mqtt.py
+pane	remote	4	:vim	1	:*	1	:/home/wisdomwolf/gamefly_calc	1	vim	:vim gamefly_calc.py
+pane	remote	5	:mosquitto_sub	0	:	1	:/home/wisdomwolf/pgoapi	1	mosquitto_sub	:mosquitto_sub -h developingwisdom.org -v -t iot/sensors/dog-food
+pane	remote	5	:mosquitto_sub	0	:	1	:/home/wisdomwolf/pgoapi	1	mosquitto_sub	:mosquitto_sub -h developingwisdom.org -v -t iot/sensors/dog-food
+pane	remote	5	:mosquitto_sub	0	:	1	:/home/wisdomwolf/pgoapi	1	mosquitto_sub	:mosquitto_sub -h developingwisdom.org -v -t iot/sensors/dog-food
+pane	remote	4	:vim	1	:*	1	:/home/wisdomwolf/gamefly_calc	1	vim	:vim gamefly_calc.py
+pane	remote	5	:mosquitto_sub	0	:	1	:/home/wisdomwolf/pgoapi	1	mosquitto_sub	:mosquitto_sub -h developingwisdom.org -v -t iot/sensors/dog-food
+pane	remote	6	:mosquitto_sub	0	:	1	:/home/wisdomwolf/life360_mqtt_bridge	1	mosquitto_sub	:mosquitto_sub -h developingwisdom.org -v -t owntracks/#
+tee -a /home/wisdomwolf/life360_mqtt_bridge/mosquitto_sub.log
+pane	remote	6	:mosquitto_sub	0	:	1	:/home/wisdomwolf/life360_mqtt_bridge	1	mosquitto_sub	:mosquitto_sub -h developingwisdom.org -v -t owntracks/#
+tee -a /home/wisdomwolf/life360_mqtt_bridge/mosquitto_sub.log
+pane	remote	6	:mosquitto_sub	0	:	1	:/home/wisdomwolf/life360_mqtt_bridge	1	mosquitto_sub	:mosquitto_sub -h developingwisdom.org -v -t owntracks/#
+tee -a /home/wisdomwolf/life360_mqtt_bridge/mosquitto_sub.log
+window	remote	1	0	:	b65d,84x34,0,0,0
+window	remote	1	0	:	b65d,84x34,0,0,0
+window	remote	2	0	:	555f,84x31,0,0,10
+window	remote	3	0	:-	cdc6,154x48,0,0,9
+window	remote	4	1	:*	c1c0,154x45,0,0,3
+window	remote	5	0	:	b061,84x23,0,0,4
+window	remote	6	0	:	aa5e,84x31,0,0,1
+window	remote	2	0	:	555f,84x31,0,0,10
+window	remote	3	0	:-	cdc6,154x48,0,0,9
+window	remote	4	1	:*	c1c0,154x45,0,0,3
+window	remote	5	0	:	b061,84x23,0,0,4
+window	remote	6	0	:	aa5e,84x31,0,0,1
+pane	remote	5	:mosquitto_sub	0	:	1	:/home/wisdomwolf/pgoapi	1	mosquitto_sub	:mosquitto_sub -h developingwisdom.org -v -t iot/sensors/dog-food
+pane	remote	6	:mosquitto_sub	0	:	1	:/home/wisdomwolf/life360_mqtt_bridge	1	mosquitto_sub	:mosquitto_sub -h developingwisdom.org -v -t owntracks/#
+tee -a /home/wisdomwolf/life360_mqtt_bridge/mosquitto_sub.log
+window	remote	1	0	:	b65d,84x34,0,0,0
+window	remote	2	0	:	555f,84x31,0,0,10
+window	remote	3	0	:-	cdc6,154x48,0,0,9
+window	remote	4	1	:*	c1c0,154x45,0,0,3
+window	remote	5	0	:	b061,84x23,0,0,4
+window	remote	6	0	:	aa5e,84x31,0,0,1
+state	remote	
+state	remote	
+window	remote	1	0	:	b65d,84x34,0,0,0
+window	remote	2	0	:	555f,84x31,0,0,10
+window	remote	3	0	:-	cdc6,154x48,0,0,9
+window	remote	4	1	:*	c1c0,154x45,0,0,3
+window	remote	5	0	:	b061,84x23,0,0,4
+window	remote	6	0	:	aa5e,84x31,0,0,1
+state	remote	
+state	remote	
+pane	remote	6	:mosquitto_sub	0	:	1	:/home/wisdomwolf/life360_mqtt_bridge	1	mosquitto_sub	:mosquitto_sub -h developingwisdom.org -v -t owntracks/#
+tee -a /home/wisdomwolf/life360_mqtt_bridge/mosquitto_sub.log
+window	remote	1	0	:	b65d,84x34,0,0,0
+window	remote	2	0	:	555f,84x31,0,0,10
+window	remote	3	0	:-	cdc6,154x48,0,0,9
+window	remote	4	1	:*	c1c0,154x45,0,0,3
+window	remote	5	0	:	b061,84x23,0,0,4
+window	remote	6	0	:	aa5e,84x31,0,0,1
+state	remote	

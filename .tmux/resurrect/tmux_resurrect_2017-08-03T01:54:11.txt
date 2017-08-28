@@ -1,0 +1,24 @@
+pane	remote	1	:fish	0	:-	1	:/home/wisdomwolf/life360_mqtt_bridge	1	fish	:
+pane	remote	1	:fish	0	:-	1	:/home/wisdomwolf/life360_mqtt_bridge	1	fish	:
+pane	remote	1	:fish	0	:-	1	:/home/wisdomwolf/life360_mqtt_bridge	1	fish	:
+pane	remote	1	:fish	0	:-	1	:/home/wisdomwolf/life360_mqtt_bridge	1	fish	:
+pane	remote	2	:mosquitto_sub	1	:*	1	:/home/wisdomwolf/life360_mqtt_bridge	1	mosquitto_sub	:mosquitto_sub -h developingwisdom.org -v -t owntracks/#
+tee -a /home/wisdomwolf/life360_mqtt_bridge/mosquitto_sub.log
+pane	remote	2	:mosquitto_sub	1	:*	1	:/home/wisdomwolf/life360_mqtt_bridge	1	mosquitto_sub	:mosquitto_sub -h developingwisdom.org -v -t owntracks/#
+tee -a /home/wisdomwolf/life360_mqtt_bridge/mosquitto_sub.log
+pane	remote	2	:mosquitto_sub	1	:*	1	:/home/wisdomwolf/life360_mqtt_bridge	1	mosquitto_sub	:mosquitto_sub -h developingwisdom.org -v -t owntracks/#
+tee -a /home/wisdomwolf/life360_mqtt_bridge/mosquitto_sub.log
+window	remote	1	0	:-	cdbd,154x48,0,0,0
+window	remote	2	1	:*	cdbe,154x48,0,0,1
+window	remote	1	0	:-	cdbd,154x48,0,0,0
+window	remote	2	1	:*	cdbe,154x48,0,0,1
+window	remote	1	0	:-	cdbd,154x48,0,0,0
+window	remote	2	1	:*	cdbe,154x48,0,0,1
+state	remote	
+state	remote	
+pane	remote	2	:mosquitto_sub	1	:*	1	:/home/wisdomwolf/life360_mqtt_bridge	1	mosquitto_sub	:mosquitto_sub -h developingwisdom.org -v -t owntracks/#
+tee -a /home/wisdomwolf/life360_mqtt_bridge/mosquitto_sub.log
+state	remote	
+window	remote	1	0	:-	cdbd,154x48,0,0,0
+window	remote	2	1	:*	cdbe,154x48,0,0,1
+state	remote	

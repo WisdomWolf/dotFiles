@@ -1,0 +1,3 @@
+pane	remote	1	:fish	1	:*	1	:/home/wisdomwolf/docker-backup	1	fish	:
+window	remote	1	1	:*	cdbd,116x48,0,0,0
+state	remote	

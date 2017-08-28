@@ -1,0 +1,3 @@
+pane	remote	2	:python3.6	1	:*	1	:/home/wisdomwolf/smartify_fm	1	python3.6	:/home/wisdomwolf/.virtualenvs/smartify-fm/bin/python3.6 /home/wisdomwolf/.virtualenvs/smartify-fm/bin/bpython -i pylast_stub.py
+window	remote	2	1	:*	cdbe,154x48,0,0,1
+state	remote	

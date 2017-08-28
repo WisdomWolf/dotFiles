@@ -1,0 +1,7 @@
+pane	remote	1	:fish	1	:*	1	:/home/wisdomwolf/Python-3.6.0	1	fish	:
+pane	remote	2	:fish	0	:	1	:/home/wisdomwolf/Python-2.6.5	1	fish	:fish
+pane	remote	3	:fish	0	:-	1	:/home/wisdomwolf/.local/share/hangupsbot	1	fish	:
+window	remote	1	1	:*	ba9d,204x72,0,0,0
+window	remote	2	0	:	ae5e,80x23,0,0,1
+window	remote	3	0	:-	ae5f,80x23,0,0,2
+state	remote	

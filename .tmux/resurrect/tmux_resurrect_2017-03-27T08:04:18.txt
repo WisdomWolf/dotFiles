@@ -1,0 +1,5 @@
+pane	remote	1	:fish	1	:*	1	:/home/wisdomwolf/house_hunter	1	fish	:fish
+pane	remote	2	:fish	0	:-	1	:/usr/local/bin	1	fish	:
+window	remote	1	1	:*	b6bd,152x33,0,0,0
+window	remote	2	0	:-	b4be,152x23,0,0,1
+state	remote	
