@@ -57,3 +57,6 @@ syntax on
 let g:ycm_python_binary_path = 'python'
 let g:ycm_autoclose_preview_window_after_insertion=1
 map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+set expandtab
+set tabstop=4
+set shiftwidth=4

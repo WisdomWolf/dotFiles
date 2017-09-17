@@ -1,1 +1,1 @@
-../../fisherman/z/functions/__zo.fish
+/home/wisdomwolf/.config/fisherman/z/functions/__zo.fish

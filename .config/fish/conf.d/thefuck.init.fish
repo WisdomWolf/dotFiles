@@ -1,1 +1,1 @@
-../../fisherman/thefuck/init.fish
+/home/wisdomwolf/.config/fisherman/thefuck/init.fish

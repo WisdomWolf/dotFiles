@@ -1,1 +1,1 @@
-../../fisherman/z/functions/z.awk
+/home/wisdomwolf/.config/fisherman/z/functions/z.awk

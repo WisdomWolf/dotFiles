@@ -1,1 +1,1 @@
-../../fisherman/sudope/functions/sudope.fish
+/home/wisdomwolf/.config/fisherman/sudope/functions/sudope.fish

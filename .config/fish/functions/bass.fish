@@ -1,1 +1,1 @@
-../../fisherman/bass/functions/bass.fish
+/home/wisdomwolf/.config/fisherman/bass/functions/bass.fish

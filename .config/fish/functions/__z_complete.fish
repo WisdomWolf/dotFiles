@@ -1,1 +1,1 @@
-../../fisherman/z/functions/__z_complete.fish
+/home/wisdomwolf/.config/fisherman/z/functions/__z_complete.fish
