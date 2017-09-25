@@ -54,7 +54,7 @@ else
     end
 end
 
-if [ hash pyenv 2>/dev/null ]
+if test -e $HOME/.pyenv/bin/pyenv
     set -x fish_user_paths $HOME/.pyenv/bin $fish_user_paths
     status --is-interactive; and . (pyenv init -|psub)
     status --is-interactive; and . (pyenv virtualenv-init -|psub)
