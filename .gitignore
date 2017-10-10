@@ -1,1 +1,2 @@
-.config/fish/fishd.*.tmux/resurrect/*
+.config/fish/fishd.*
+.tmux/resurrect/**
