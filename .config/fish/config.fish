@@ -55,9 +55,11 @@ else
 end
 
 if test -e $HOME/.pyenv/bin/pyenv
-    set -x fish_user_paths $HOME/.pyenv/bin $fish_user_paths
-    status --is-interactive; and . (pyenv init -|psub)
-    status --is-interactive; and . (pyenv virtualenv-init -|psub)
+    if not contains "$HOME/.pyenv/bin" $fish_user_paths
+        set -x fish_user_paths $HOME/.pyenv/bin $fish_user_paths
+    end
+    status --is-interactive; and source (pyenv init -|psub)
+    status --is-interactive; and source (pyenv virtualenv-init -|psub)
 else
     echo "pyenv doesn't appear to be installed"
 end
