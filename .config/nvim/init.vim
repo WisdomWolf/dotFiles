@@ -71,6 +71,7 @@ Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'sebastianmarkow/deoplete-rust', {'for': 'rust'}
 Plug 'cespare/vim-toml', {'for': 'toml'}
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 call plug#end()
 
@@ -462,3 +463,5 @@ command! PlugLoadAll call plug#load(keys(g:plugs))
 if filereadable(glob("~/.config/nvim/local.vim"))
     source ~/.config/nvim/local.vim
 endif
+cnoremap w!! w !sudo tee > /dev/null %
+set relativenumber
