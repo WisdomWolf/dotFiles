@@ -1,3 +1,1 @@
-function fish_title
-	
-end
+/home/wisdomwolf/.config/fisherman/scorphish/fish_title.fish

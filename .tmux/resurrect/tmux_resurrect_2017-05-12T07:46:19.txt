@@ -1,5 +1,0 @@
-pane	remote	1	:fish	0	:-	1	:/home/wisdomwolf	1	fish	:
-pane	remote	2	:fish	1	:*	1	:/home/wisdomwolf/.docker/nodered/data	1	fish	:
-window	remote	1	0	:-	b39d,202x23,0,0,0
-window	remote	2	1	:*	aa5e,84x31,0,0,1
-state	remote	

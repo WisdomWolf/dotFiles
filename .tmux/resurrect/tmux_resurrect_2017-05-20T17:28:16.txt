@@ -1,7 +1,0 @@
-pane	remote	1	:fish	0	:-	1	:/home/wisdomwolf	1	fish	:
-pane	remote	2	:fish	1	:*	1	:/home/wisdomwolf/node-red-docker-origin	1	fish	:fish
-pane	remote	3	:fish	0	:	1	:/home/wisdomwolf	1	fish	:
-window	remote	1	0	:-	c77d,186x65,0,0,0
-window	remote	2	1	:*	b75e,219x23,0,0,1
-window	remote	3	0	:	c77f,186x65,0,0,2
-state	remote	
