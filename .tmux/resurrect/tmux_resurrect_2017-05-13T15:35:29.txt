@@ -1,7 +1,0 @@
-pane	remote	1	:fish	0	:	1	:/home/wisdomwolf	1	fish	:
-pane	remote	2	:[tmux]	1	:*M	1	:/home/wisdomwolf/.docker/certs	1	fish	:
-pane	remote	3	:fish	0	:-	1	:/home/wisdomwolf	1	fish	:
-window	remote	1	0	:	b39d,202x23,0,0,0
-window	remote	2	1	:*M	b75e,219x23,0,0,1
-window	remote	3	0	:-	b39f,202x23,0,0,2
-state	remote	
