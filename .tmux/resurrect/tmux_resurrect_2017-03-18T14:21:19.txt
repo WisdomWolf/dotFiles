@@ -1,5 +1,0 @@
-pane	remote	1	:docker	0	:-	1	:/home/wisdomwolf	1	docker	:docker run -it --name house_hunter python bash
-pane	remote	2	:docker	1	:*	1	:/home/wisdomwolf	1	docker	:docker run -it --rm wisdomwolf/house_hunter bash
-window	remote	1	0	:-	aa5d,84x31,0,0,0
-window	remote	2	1	:*	b4be,152x23,0,0,1
-state	remote	
