@@ -1,7 +1,7 @@
-export PATH="$(brew --prefix)/bin:$PATH"
+#export PATH="$(brew --prefix)/bin:$PATH"
 
 
-source ~/.xsh
+#source ~/.xsh
 
 case $- in
     *i*)
@@ -10,7 +10,7 @@ case $- in
             fish=$(command -v fish)
             if [ -x "$fish" ]; then
                 export SHELL="$fish"
-                exec "$fish"
+                exec "$fish" -l
             fi
         fi
 esac
