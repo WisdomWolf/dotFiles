@@ -1,0 +1,1 @@
+/home/wisdomwolf/.config/fisherman/fisk/fish_prompt.fish
