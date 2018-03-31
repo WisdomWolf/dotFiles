@@ -1,0 +1,1 @@
+/home/wisdomwolf/.config/fisherman/scorphish/fish_prompt.fish
