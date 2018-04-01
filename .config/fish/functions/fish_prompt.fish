@@ -1,1 +1,1 @@
-/home/wisdomwolf/.config/fisherman/fisk/fish_prompt.fish
+/home/pi/.config/fisherman/scorphish/fish_prompt.fish

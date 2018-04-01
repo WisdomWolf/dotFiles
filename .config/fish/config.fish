@@ -23,7 +23,7 @@ function start_agent
     ssh-agent -c | sed 's/^echo/#echo/' >$SSH_ENV
     echo "succeeded"
     chmod 600 $SSH_ENV
-    . $SSH_ENV >/dev/null
+    source $SSH_ENV >/dev/null
     ssh-add
 end
 
@@ -44,7 +44,7 @@ if [ -n "$SSH_AGENT_PID" ]
     end
 else
     if [ -f $SSH_ENV ]
-        . $SSH_ENV >/dev/null
+        source $SSH_ENV >/dev/null
     end
     ps -ef | grep $SSH_AGENT_PID | grep -v grep | grep ssh-agent >/dev/null
     if [ $status -eq 0 ]

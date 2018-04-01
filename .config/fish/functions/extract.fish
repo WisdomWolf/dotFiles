@@ -1,1 +1,1 @@
-/home/wisdomwolf/.config/fisherman/extract/functions/extract.fish
+/home/pi/.config/fisherman/extract/functions/extract.fish
