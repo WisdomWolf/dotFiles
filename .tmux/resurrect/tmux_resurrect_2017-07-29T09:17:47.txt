@@ -1,6 +1,0 @@
-pane	remote	1	:micro	1	:*	1	:/home/wisdomwolf/docker-backup	1	micro	:micro dockerbackup.py
-window	remote	1	1	:*	cdbd,154x48,0,0,0
-state	remote	
-pane	remote	1	:micro	1	:*	1	:/home/wisdomwolf/docker-backup	1	micro	:micro dockerbackup.py
-window	remote	1	1	:*	cdbd,154x48,0,0,0
-state	remote	

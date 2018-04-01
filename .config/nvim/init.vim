@@ -71,6 +71,7 @@ Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}
 Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'sebastianmarkow/deoplete-rust', {'for': 'rust'}
 Plug 'cespare/vim-toml', {'for': 'toml'}
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
 call plug#end()
 
@@ -393,6 +394,10 @@ if has('nvim')
     tnoremap <A-l> <C-\><C-n><C-w>l
 endif
 
+" mappings for space to toggle folds --wisdomwolf
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
+
 " mappings for navigating between windows with alt+homerow
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
@@ -462,3 +467,5 @@ command! PlugLoadAll call plug#load(keys(g:plugs))
 if filereadable(glob("~/.config/nvim/local.vim"))
     source ~/.config/nvim/local.vim
 endif
+cnoremap w!! w !sudo tee > /dev/null %
+set relativenumber
