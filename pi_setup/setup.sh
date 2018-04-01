@@ -25,3 +25,5 @@ fi
 
 # set keyboard to US
 sed -i "s/XKBLAYOUT=\"gb\"/XKBLAYOUT=\"us\"/" /etc/default/keyboard
+# reboot for changes to take effect
+reboot now
