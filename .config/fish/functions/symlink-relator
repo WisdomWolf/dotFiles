@@ -1,0 +1,6 @@
+#!/bin/sh
+find . -lname '/*' |
+while read l ; do
+  echo ln -sf $(echo $(echo $1 | sed 's|/[^/]*|/..|g')$(readlink $1) | sed 's/.....//') $1
+done |
+sh

@@ -394,6 +394,10 @@ if has('nvim')
     tnoremap <A-l> <C-\><C-n><C-w>l
 endif
 
+" mappings for space to toggle folds --wisdomwolf
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
+
 " mappings for navigating between windows with alt+homerow
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
