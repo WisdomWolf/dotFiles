@@ -23,6 +23,7 @@ else
 fi
 
 chown -R $SUDO_USER:$SUDO_USER $HOME
+raspi-config nonint do_boot_behaviour B2
 
 # set keyboard to US
 sed -i "s/XKBLAYOUT=\"gb\"/XKBLAYOUT=\"us\"/" /etc/default/keyboard
