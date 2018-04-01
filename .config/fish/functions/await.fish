@@ -1,0 +1,1 @@
+/home/wisdomwolf/.config/fisherman/await/functions/await.fish
