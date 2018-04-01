@@ -12,7 +12,6 @@ apt install -y fish tmux vim curl wget git httpie jq sed nodejs neovim
 if ! [ -e $HOME/.config/fish/functions/fisher.fish ]; then
 	echo "Downloading fisher"
 	curl -Lo $HOME/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
-	chown -R $SUDO_USER:$SUDO_USER $HOME/.config/fish/functions
 else
 	echo "skipping fisher install"
 fi
@@ -23,7 +22,10 @@ else
 	echo "skipping yadm install"
 fi
 
+chown -R $SUDO_USER:$SUDO_USER $HOME
+
 # set keyboard to US
 sed -i "s/XKBLAYOUT=\"gb\"/XKBLAYOUT=\"us\"/" /etc/default/keyboard
+
 # reboot for changes to take effect
 reboot now
