@@ -1,0 +1,1 @@
+/home/wisdomwolf/.config/fisherman/fisk/_fisk_concat.fish

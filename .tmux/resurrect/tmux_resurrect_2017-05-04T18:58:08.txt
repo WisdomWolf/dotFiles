@@ -1,3 +1,0 @@
-pane	remote	1	:docker	1	:*	1	:/home/wisdomwolf	1	docker	:docker exec -it mynodered bash
-window	remote	1	1	:*	ae5d,80x23,0,0,0
-state	remote	
