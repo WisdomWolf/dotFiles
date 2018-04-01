@@ -1,0 +1,1 @@
+/home/wisdomwolf/.config/fisherman/agnoster/fish_mode_prompt.fish
