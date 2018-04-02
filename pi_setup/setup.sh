@@ -8,7 +8,10 @@ else
 	echo "skipping node install"
 fi
 apt update
-apt install -y fish tmux vim curl wget git httpie jq sed nodejs neovim
+apt install -y fish tmux vim curl wget git httpie jq sed nodejs neovim \
+python python3 python-dev python3-dev python-pip python3-pip make buildessential \
+libssel-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncurses5-dev \
+libncursesw5-dev xz-utils tk-dev
 if ! [ -e $HOME/.config/fish/functions/fisher.fish ]; then
 	echo "Downloading fisher"
 	curl -Lo $HOME/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
