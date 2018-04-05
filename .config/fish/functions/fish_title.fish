@@ -1,1 +1,0 @@
-/home/wisdomwolf/.config/fisherman/scorphish/fish_title.fish
