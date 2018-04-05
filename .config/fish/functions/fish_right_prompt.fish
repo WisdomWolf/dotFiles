@@ -1,1 +1,1 @@
-/home/wisdomwolf/.config/fish/functions/fish_right_prompt.fish##Linux.WISDOM-DEVBUNTUX
+/home/pi/.config/fisherman/scorphish/fish_right_prompt.fish
