@@ -41,3 +41,6 @@ report.list.columns=id,start.age,entry.age,depends.indicator,priority,project,ta
 urgency.blocking.coefficient=2.0
 urgency.user.tag.later.coefficient=-6.0
 report.next.labels=ID,Active,Age,Deps,Project,Tag,Recur,S,Due,Until,Description,Urg
+urgency.user.tag.code.coefficient=-2.0
+urgency.user.tag.home.coefficient=5.0
+context.home=+home
