@@ -53,6 +53,8 @@ Plug 'tpope/vim-surround'
 Plug 'kshenoy/vim-signature'
 Plug 'junegunn/vim-easy-align', {'on': 'EasyAlign'}
 Plug 'sbdchd/neoformat', {'on': 'Neoformat'}
+Plug 'wellle/targets.vim'
+Plug 'konfekt/fastfold'
 
 " language support
 Plug 'lervag/vimtex'
@@ -105,7 +107,7 @@ let &formatlistpat='^\s*\(\d\+[\]:.)}\t ]\|[*-][\t ]\)\s*'
 set scrolloff=3
 
 " spell checking
-set spell spelllang=en,de
+set spell spelllang=en
 
 " search options
 set hlsearch " highlight search matches. Turn of with :nohlsearch after a search
@@ -469,3 +471,8 @@ if filereadable(glob("~/.config/nvim/local.vim"))
 endif
 cnoremap w!! w !sudo tee > /dev/null %
 set relativenumber
+
+" Easy block comment toggle
+vnoremap <silent> # :s/^/#/<cr>:noh<cr>
+vnoremap <silent> -# :s/^/^#//<cr>:noh<cr>
+
