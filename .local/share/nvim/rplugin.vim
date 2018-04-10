@@ -1,3 +1,6 @@
+" node plugins
+
+
 " python3 plugins
 call remote#host#RegisterPlugin('python3', '/home/wisdomwolf/.local/share/nvim/bundle/denite.nvim/rplugin/python3/denite', [
       \ {'sync': v:true, 'name': '_denite_init', 'type': 'function', 'opts': {}},

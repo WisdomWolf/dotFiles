@@ -1,0 +1,46 @@
+# [Created by task 2.5.1 4/2/2018 14:48:27]
+# Taskwarrior program configuration file.
+# For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
+# 'man task-sync' or 'man taskrc'
+
+# Here is an example of entries that use the default, override and blank values
+#   variable=foo   -- By specifying a value, this overrides the default
+#   variable=      -- By specifying no value, this means no default
+#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+
+# Use the command 'task show' to see all defaults and overrides
+
+# Files
+data.location=~/.task
+
+# Color theme (uncomment one to use)
+#include /home//data/data/com.termux/files/home/usr/share/doc/task/rc/light-16.theme
+#include /home//data/data/com.termux/files/home/usr/share/doc/task/rc/light-256.theme
+#include /home//data/data/com.termux/files/home/usr/share/doc/task/rc/dark-16.theme
+#include /home//data/data/com.termux/files/home/usr/share/doc/task/rc/dark-256.theme
+#include /home//data/data/com.termux/files/home/usr/share/doc/task/rc/dark-red-256.theme
+#include /home//data/data/com.termux/files/home/usr/share/doc/task/rc/dark-green-256.theme
+#include /home//data/data/com.termux/files/home/usr/share/doc/task/rc/dark-blue-256.theme
+#include /home//data/data/com.termux/files/home/usr/share/doc/task/rc/dark-violets-256.theme
+#include /home//data/data/com.termux/files/home/usr/share/doc/task/rc/dark-yellow-green.theme
+#include /home//data/data/com.termux/files/home/usr/share/doc/task/rc/dark-gray-256.theme
+#include /home//data/data/com.termux/files/home/usr/share/doc/task/rc/dark-gray-blue-256.theme
+#include /home//data/data/com.termux/files/home/usr/share/doc/task/rc/solarized-dark-256.theme
+#include /home//data/data/com.termux/files/home/usr/share/doc/task/rc/solarized-light-256.theme
+#include /home//data/data/com.termux/files/home/usr/share/doc/task/rc/no-color.theme
+
+taskd.certificate=~/.task/private.certificate.pem
+taskd.key=~/.task/private.key.pem
+taskd.ca=~/.task/ca.cert.pem
+taskd.server=taskwarrior.inthe.am:53589
+taskd.credentials=inthe_am/wisdomwolf/8305e8ab-7d3d-4b06-963f-6d83c37125de
+taskd.trust=ignore hostname
+report.next.filter=-compass -nevernext status:pending limit:5
+report.next.columns=id,start.age,entry.age,depends,project,tags,recur,scheduled.countdown,due.remaining,until.remaining,description.count,urgency
+report.list.columns=id,start.age,entry.age,depends.indicator,priority,project,tags,recur.indicator,scheduled.countdown,due,until.remaining,description,urgency
+urgency.blocking.coefficient=2.0
+urgency.user.tag.later.coefficient=-6.0
+report.next.labels=ID,Active,Age,Deps,Project,Tag,Recur,S,Due,Until,Description,Urg
+urgency.user.tag.code.coefficient=-2.0
+urgency.user.tag.home.coefficient=5.0
+context.home=+home
