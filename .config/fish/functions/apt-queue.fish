@@ -1,1 +1,1 @@
-/home/pi/.config/fisherman/apt/functions/apt-queue.fish
+/home/wisdomwolf/.config/fisherman/apt/functions/apt-queue.fish
