@@ -74,6 +74,7 @@ Plug 'rust-lang/rust.vim', {'for': 'rust'}
 Plug 'sebastianmarkow/deoplete-rust', {'for': 'rust'}
 Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'chase/vim-ansible-yaml'
 
 call plug#end()
 
@@ -475,4 +476,6 @@ set relativenumber
 " Easy block comment toggle
 vnoremap <silent> # :s/^/#/<cr>:noh<cr>
 vnoremap <silent> -# :s/^/^#//<cr>:noh<cr>
+
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
