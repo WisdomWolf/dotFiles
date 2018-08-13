@@ -19,15 +19,8 @@
 .config/fish/functions/copy-fish_prompt.fish
 .config/fish/functions/copy-fish_title.fish
 .config/fish/functions/extract.fish
+.config/fish/functions/fish_*.fish
 .config/fish/functions/fish_greeting.fish
-.config/fish/functions/fish_mode_prompt.fish
-.config/fish/functions/fish_prompt.fish
-.config/fish/functions/fish_prompt.fish##Linux.WISDOM-DEVBUNTUX
-.config/fish/functions/fish_prompt.fish##Linux.wisdom-dellbuntu
-.config/fish/functions/fish_right_prompt.fish
-.config/fish/functions/fish_right_prompt.fish##Linux.WISDOM-DEVBUNTUX
-.config/fish/functions/fish_right_prompt.fish##Linux.wisdom-dellbuntu
-.config/fish/functions/fish_title.fish
 .config/fish/functions/fuck.fish
 .config/fish/functions/fundle.fish
 .config/fish/functions/last_job_id.fish
@@ -56,4 +49,5 @@
 .config/fisherman/sudope
 .config/fisherman/thefuck
 .config/fisherman/theme
+.tmux/plugins/*
 
