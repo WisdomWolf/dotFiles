@@ -165,6 +165,7 @@ set ttimeoutlen=0
 " put leader to space
 map <space> <leader>
 map <space><space> <leader><leader>
+let mapleader = ","
 
 " shortcut for replacing words under the cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
