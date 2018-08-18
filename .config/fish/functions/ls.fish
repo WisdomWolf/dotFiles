@@ -1,0 +1,1 @@
+/home/wisdomwolf/.config/fisherman/grc/functions/ls.fish
