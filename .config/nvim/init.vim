@@ -165,6 +165,7 @@ set ttimeoutlen=0
 " put leader to space
 map <space> <leader>
 map <space><space> <leader><leader>
+let mapleader = ","
 
 " shortcut for replacing words under the cursor
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
@@ -239,9 +240,9 @@ let g:ale_linters = {
 let g:ale_lint_on_text_changed = 'never'
 
 " deoplete settings
-let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_at_startup = 1
 " let g:deoplete#enable_camel_case = 1
-call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
+"call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
 
 let g:clang_complete_auto = 0
 let g:clang_auto_select = 0
@@ -310,9 +311,9 @@ call denite#custom#map(
 call denite#custom#source('buffer', 'sorters', [])
 
 " better colors
-call denite#custom#option('_', 'highlight_mode_insert', 'CursorLine')
-call denite#custom#option('_', 'highlight_matched_range', 'None')
-call denite#custom#option('_', 'highlight_matched_char', 'None')
+"call denite#custom#option('_', 'highlight_mode_insert', 'CursorLine')
+"call denite#custom#option('_', 'highlight_matched_range', 'None')
+"call denite#custom#option('_', 'highlight_matched_char', 'None')
 
 " disable spell checking here
 autocmd vimrc FileType denite setlocal nospell
