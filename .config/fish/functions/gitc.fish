@@ -1,3 +1,3 @@
 function gitc
-	git commit -am $argv;
+	git commit -m $argv;
 end
