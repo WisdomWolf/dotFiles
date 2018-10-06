@@ -60,6 +60,4 @@ if test -e $HOME/.pyenv/bin/pyenv
     end
     status --is-interactive; and source (pyenv init -|psub)
     status --is-interactive; and source (pyenv virtualenv-init -|psub)
-else
-    echo "pyenv doesn't appear to be installed"
 end
