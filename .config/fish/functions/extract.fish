@@ -1,1 +1,0 @@
-/home/pi/.config/fisherman/extract/functions/extract.fish

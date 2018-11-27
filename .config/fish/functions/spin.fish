@@ -1,1 +1,0 @@
-/home/wisdomwolf/.config/fisherman/spin/spin.fish

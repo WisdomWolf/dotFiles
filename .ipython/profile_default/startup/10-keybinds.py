@@ -17,7 +17,7 @@ def execute_now(event):
     
 
 # Register the shortcut if IPython is using prompt_toolkit
-if getattr(ip, 'pt_cli'):
+if hasattr(ip, 'pt_cli') and getattr(ip, 'pt_cli'):
     registry = ip.pt_cli.application.key_bindings_registry
     registry.add_binding(Keys.ControlN,
                     filter=(HasFocus(DEFAULT_BUFFER)
