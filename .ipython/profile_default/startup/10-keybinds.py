@@ -14,16 +14,12 @@ def insert_unexpected(event):
 def execute_now(event):
     b = event.current_buffer
     b.accept_action.validate_and_handle(event.cli, b)
-    
+
 
 # Register the shortcut if IPython is using prompt_toolkit
-try:
-    if getattr(ip, 'pt_cli'):
-        registry = ip.pt_cli.application.key_bindings_registry
-        registry.add_binding(Keys.ControlN,
-                        filter=(HasFocus(DEFAULT_BUFFER)
-                        & ~HasSelection()
-                        & insert_mode))(execute_now)
-except AttributeError:
-    pass
-
+if hasattr(ip, 'pt_cli') and getattr(ip, 'pt_cli'):
+    registry = ip.pt_cli.application.key_bindings_registry
+    registry.add_binding(Keys.ControlN,
+                    filter=(HasFocus(DEFAULT_BUFFER)
+                    & ~HasSelection()
+                    & insert_mode))(execute_now)
