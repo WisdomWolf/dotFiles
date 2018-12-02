@@ -17,9 +17,13 @@ def execute_now(event):
     
 
 # Register the shortcut if IPython is using prompt_toolkit
-if getattr(ip, 'pt_cli'):
-    registry = ip.pt_cli.application.key_bindings_registry
-    registry.add_binding(Keys.ControlN,
-                    filter=(HasFocus(DEFAULT_BUFFER)
-                    & ~HasSelection()
-                    & insert_mode))(execute_now)
+try:
+    if getattr(ip, 'pt_cli'):
+        registry = ip.pt_cli.application.key_bindings_registry
+        registry.add_binding(Keys.ControlN,
+                        filter=(HasFocus(DEFAULT_BUFFER)
+                        & ~HasSelection()
+                        & insert_mode))(execute_now)
+except AttributeError:
+    pass
+
