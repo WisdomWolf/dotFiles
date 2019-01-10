@@ -34,10 +34,6 @@
 .config/fish/functions/theme.util.remove.current.fish
 .config/fish/functions/tio.fish
 .config/fish/functions/transfer.fish
-.config/fish/functions/vf.fish
-.config/fish/functions/vf_activated.fish
-.config/fish/functions/vf_deactivated.fish
-.config/fish/functions/vf_new.fish
 .config/fish/functions/z.awk
 .config/fish/functions/zadd.awk
 .config/fish/functions/zclean.awk

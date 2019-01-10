@@ -1,0 +1,1 @@
+/home/wisdomwolf/.config/fish/completions/ssh.fish

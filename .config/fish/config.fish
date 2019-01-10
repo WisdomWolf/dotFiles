@@ -60,6 +60,11 @@ if test -e $HOME/.pyenv/bin/pyenv
     end
     status --is-interactive; and source (pyenv init -|psub)
     status --is-interactive; and source (pyenv virtualenv-init -|psub)
-else
-    echo "pyenv doesn't appear to be installed"
+end
+source ~/.config/extraterm/commands/setup_extraterm_fish.fish
+
+if not functions -q fisher
+    set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+    curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
+    fish -c fisher
 end

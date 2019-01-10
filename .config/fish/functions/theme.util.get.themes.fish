@@ -1,1 +1,0 @@
-/home/wisdomwolf/.config/fisherman/theme/theme.util.get.themes.fish

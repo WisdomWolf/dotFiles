@@ -1,1 +1,0 @@
-/home/wisdomwolf/.config/fisherman/bass/functions/__bass.py
