@@ -1,1 +1,0 @@
-/home/wisdomwolf/.config/fisherman/apt/functions/apt-queue.fish
