@@ -61,6 +61,7 @@ if test -e $HOME/.pyenv/bin/pyenv
     status --is-interactive; and source (pyenv init -|psub)
     status --is-interactive; and source (pyenv virtualenv-init -|psub)
 end
+source ~/.config/extraterm/commands/setup_extraterm_fish.fish
 
 if not functions -q fisher
     set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config

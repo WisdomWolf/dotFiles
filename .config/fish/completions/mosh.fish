@@ -1,1 +1,1 @@
-complete -c mosh -a (~/.config/fish/completions/ssh_completions.py)
+/home/wisdomwolf/.config/fish/completions/ssh.fish
