@@ -1,4 +1,4 @@
-# Defined in /tmp/fish.BoHUZb/vf.fish @ line 2
+# Defined in /tmp/fish.2cWeuk/vf.fish @ line 2
 function vf
 	set arg_count (count $argv)
     if test $arg_count -gt 1
@@ -6,7 +6,11 @@ function vf
         set env_name $argv[2]
         pyenv virtualenv $base_version $env_name
     else
-        set env_name $argv[1]
+        if test $arg_count -gt 0
+            set env_name $argv[1]
+        else
+            set env_name (this-dir)
+        end
         pyenv virtualenv $env_name
     end
     pyenv local $env_name
