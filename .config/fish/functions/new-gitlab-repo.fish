@@ -1,5 +1,10 @@
+# Defined in - @ line 2
 function new-gitlab-repo
-	if test (count $argv) -lt 1
+	if test -z "$GITLAB_TOKEN"
+        echo "GITLAB_TOKEN must be set first"
+        return
+    end
+    if test (count $argv) -lt 1
         set project_name (string split '/' (pwd))[-1]
     else
         set project_name $argv[1]
@@ -8,7 +13,7 @@ function new-gitlab-repo
     set -l new_project (curl --header "PRIVATE-TOKEN: $GITLAB_TOKEN" -s https://gitlab.com/api/v4/projects -d name=$project_name)
     set -l ssh_url (echo $new_project | jq -r '.ssh_url_to_repo')
     echo $new_project | jq -r '"\(.id)\t\(.name)\t\(.web_url)"'
-    read -p 'echo "Would you like to add this project as remote git repo? "' -n 1 -l add_git_repo
+    read -P 'echo "Would you like to add this project as remote git repo? "' -n 1 -l add_git_repo
     if test "$add_git_repo" = "y" -o "$add_git_repo" = "Y"
         git remote add origin $ssh_url
         echo "remote repo set"
