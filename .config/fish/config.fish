@@ -18,6 +18,10 @@ set -x SHELL (which fish)
 # if it does not exist, create the file
 setenv SSH_ENV $HOME/.ssh/environment
 
+if test -n "$WSL_DISTRO_NAME"
+    eval (/mnt/c/ProgramData/weasel-pageant/weasel-pageant -S fish -rb -a $HOME/.weasel-pageant.sock)
+end
+
 function start_agent
     echo "Initializing new SSH agent ..."
     ssh-agent -c | sed 's/^echo/#echo/' >$SSH_ENV
