@@ -18,6 +18,15 @@ set -x SHELL (which fish)
 # if it does not exist, create the file
 setenv SSH_ENV $HOME/.ssh/environment
 
+function start_agent
+    echo "Initializing new SSH agent ..."
+    ssh-agent -c | sed 's/^echo/#echo/' >$SSH_ENV
+    echo "succeeded"
+    chmod 600 $SSH_ENV
+    source $SSH_ENV >/dev/null
+    ssh-add
+end
+
 function test_identities
     ssh-add -l | grep "The agent has no identities" >/dev/null
     if [ $status -eq 0 ]
@@ -55,14 +64,6 @@ else
 end
 
 
-function start_agent
-    echo "Initializing new SSH agent ..."
-    ssh-agent -c | sed 's/^echo/#echo/' >$SSH_ENV
-    echo "succeeded"
-    chmod 600 $SSH_ENV
-    source $SSH_ENV >/dev/null
-    ssh-add
-end
 
 function test_identities
     ssh-add -l | grep "The agent has no identities" >/dev/null
