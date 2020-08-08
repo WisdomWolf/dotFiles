@@ -38,22 +38,44 @@ function test_identities
     end
 end
 
-if [ -n "$SSH_AGENT_PID" ]
-    ps -ef | grep $SSH_AGENT_PID | grep ssh-agent >/dev/null
-    if [ $status -eq 0 ]
-        test_identities
+if test -n "$WSL_DISTRO_NAME"
+    set -x SSH_AUTH_SOCK $HOME/.ssh/agent.sock
+    ss -a | grep -q $SSH_AUTH_SOCK
+    if [ $status != 0 ]
+        rm -f $SSH_AUTH_SOCK
+        setsid nohup socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:$HOME/.ssh/wsl2-ssh-pageant.exe >/dev/null 2>&1 &
     end
 else
-    if [ -f $SSH_ENV ]
-        source $SSH_ENV >/dev/null
-    end
-    ps -ef | grep $SSH_AGENT_PID | grep -v grep | grep ssh-agent >/dev/null
-    if [ $status -eq 0 ]
-        test_identities
+    if [ -n "$SSH_AGENT_PID" ]
+        ps -ef | grep $SSH_AGENT_PID | grep ssh-agent >/dev/null
+        if [ $status -eq 0 ]
+            test_identities
+        end
     else
-        start_agent
+        if [ -f $SSH_ENV ]
+            source $SSH_ENV >/dev/null
+        end
+        ps -ef | grep $SSH_AGENT_PID | grep -v grep | grep ssh-agent >/dev/null
+        if [ $status -eq 0 ]
+            test_identities
+        else
+            start_agent
+        end
     end
 end
+
+
+
+function test_identities
+    ssh-add -l | grep "The agent has no identities" >/dev/null
+    if [ $status -eq 0 ]
+        ssh-add
+        if [ $status -eq 2 ]
+            start_agent
+        end
+    end
+end
+
 
 if test -e $HOME/.pyenv/bin/pyenv
     if not contains "$HOME/.pyenv/bin" $fish_user_paths
@@ -62,7 +84,7 @@ if test -e $HOME/.pyenv/bin/pyenv
     status --is-interactive; and source (pyenv init -|psub)
     status --is-interactive; and source (pyenv virtualenv-init -|psub)
 end
-source ~/.config/extraterm/commands/setup_extraterm_fish.fish
+# source ~/.config/extraterm/commands/setup_extraterm_fish.fish
 
 if not functions -q fisher
     set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
