@@ -1,3 +1,4 @@
+bind -e \cs
 if status --is-login
     set PPID (echo (ps --pid %self -o ppid --no-headers) | xargs)
     if ps --pid $PPID | grep ssh
