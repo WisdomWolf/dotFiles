@@ -1,0 +1,117 @@
+#!/bin/bash
+
+# default environment variables
+KUBECTL_SSH_VERSION=1.0.1
+SYNCHRONIZE_PANES=1
+TMUX_SESSION_NAME=$(tmux display-message -p "#S" 2> /dev/null)
+EXECUTABLE=${BASH_SOURCE[0]}
+
+if readlink ${EXECUTABLE} > /dev/null 2>&1; then
+    EXECUTABLE=$(readlink ${EXECUTABLE})
+fi
+
+DIR="$(cd "$( dirname "${EXECUTABLE}" )" >/dev/null && pwd)"
+
+source $DIR/parse-args.sh
+
+# set environment variable defaults
+ADDRESS_TYPE=${ADDRESS_TYPE:-ExternalIP}
+
+# creates a new tmux window
+createNewTmuxWindow() {
+    tmux new-window $1
+}
+
+# ensure tmux executable exists
+ensureTmuxExists() {
+    if [ -z "$(which tmux)" ]; then
+        echo "tmux executable not found ... is it installed?"
+        exit 1
+    fi
+}
+
+# ensure desired tmux session exists, otherwise exit
+ensureTmuxSessionExists() {
+    if ! tmux ls 2> /dev/null | grep -q "${TMUX_SESSION_NAME}: "; then
+        echo "Failed to connect to tmux session."
+        exit 1
+    fi
+}
+
+# gets node ips from a name selector
+getNodeIPs() {
+    if [ -z "${SELECTOR}" ]; then
+        kubectl get nodes -o jsonpath="{.items[*].status.addresses[?(@.type=='$ADDRESS_TYPE')].address}"
+    else
+        kubectl get nodes -o jsonpath="{.items[*].status.addresses[?(@.type=='$ADDRESS_TYPE')].address}" -l ${SELECTOR}
+    fi
+}
+
+# switch the tmux window layout
+selectTmuxLayout() {
+    tmux select-layout $1
+}
+
+# creates a new tmux window
+splitTmuxWindow() {
+    tmux split-window $1
+}
+
+# set synchronization for current tmux window
+synchronizePanes() {
+    tmux set-window-option synchronize-panes "on"
+}
+
+# unset synchronization for current tmux window
+unsynchronizePanes() {
+    tmux set-window-option synchronize-panes "off"
+}
+
+sshIntoNodes() {
+    IPS=$(getNodeIPs)
+    if [ -z "${IPS}" ]; then
+        echo "No matching nodes found!"
+        exit 1
+    fi
+
+    INDEX=0
+    for IP in ${IPS}; do
+        KUBECTL_SSH_COMMAND="ssh"
+
+        if [ -z "${SSH_USERNAME}" ]; then
+            KUBECTL_SSH_COMMAND="${KUBECTL_SSH_COMMAND} ${IP}"
+        else
+            KUBECTL_SSH_COMMAND="${KUBECTL_SSH_COMMAND} ${SSH_USERNAME}@${IP}"
+        fi
+
+        if [ -n "${SSH_PORT}" ]; then
+            KUBECTL_SSH_COMMAND="${KUBECTL_SSH_COMMAND} -p ${SSH_PORT}"
+        fi
+
+        if [ -n "${SSH_IDENTITY_FILE}" ]; then
+            KUBECTL_SSH_COMMAND="${KUBECTL_SSH_COMMAND} -i ${SSH_IDENTITY_FILE}"
+        fi
+
+        if [ ${INDEX} -eq 0 ]; then
+            createNewTmuxWindow "${KUBECTL_SSH_COMMAND}"
+        else
+            splitTmuxWindow "${KUBECTL_SSH_COMMAND}"
+            selectTmuxLayout tiled
+        fi
+        INDEX=$((INDEX+1))
+    done
+}
+
+# execute pre-command checks
+ensureTmuxExists
+ensureTmuxSessionExists
+
+# ssh into matching nodes
+sshIntoNodes
+
+# properly set synchronize-panes
+if [ ${SYNCHRONIZE_PANES} -eq 1 ]; then
+    synchronizePanes
+else
+    unsynchronizePanes
+fi
