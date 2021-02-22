@@ -217,24 +217,6 @@ function startbitbucket {
     git push -u origin --tags
 }
 
-# Slackbot Messages
-function slackbot() {
-	local channel=$1
-	local message=$2
-	local url='https://compass-dataservices.slack.com/services/hooks/slackbot'
-	local token='f1Jl7KiWgQPs1QClcvYmTGoj'
-	curl --data "$message" $"$url?token=$token&channel=%23$channel"
-}
-
-# Slackbot Messages direct to id10T-chat
-function idiot_chat() {
-	local channel='id10t-chat'
-	local message=$1
-	local url='https://compass-dataservices.slack.com/services/hooks/slackbot'
-	local token='f1Jl7KiWgQPs1QClcvYmTGoj'
-	curl --data "$message" $"$url?token=$token&channel=%23$channel"
-}
-
 # Creates an archive from given directory
 mktar() { tar cvf  "${1%%/}.tar"     "${1%%/}/"; }
 mktgz() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
