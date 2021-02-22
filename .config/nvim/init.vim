@@ -518,4 +518,11 @@ vmap <expr> <f28> XTermPasteBegin("c")
 cmap <f28> <nop>
 cmap <f29> <nop>
 
-source $HOME/.config/nvim/custom.vim
+" Function to source only if file exists
+function! SourceIfExists(file)
+    if filereadable(expand(a:file))
+        exe 'source' a:file
+    endif
+endfunction
+
+call SourceIfExists("~/.config/nvim/custom.vim")
