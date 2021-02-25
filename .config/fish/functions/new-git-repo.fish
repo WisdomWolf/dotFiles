@@ -1,9 +1,9 @@
-# Defined in /home/wisdomwolf/.config/fish/functions/new-git-repo.fish @ line 1
+# Defined in /tmp/fish.vHkaH5/new-git-repo.fish @ line 2
 function new-git-repo
     set -l options (fish_opt --short=h --long=help)
-    set -la options (fish_opt --short=t --long=host --required-val)
+    set -la options (fish_opt --short=r --long=provider --required-val)
     set -la options (fish_opt --short=p --long=project --required-val)
-    set -la options (fish_opt --short=d --long=debug --optional-val)
+    set -la options (fish_opt --short=d --long=debug)
     argparse $options -- $argv
     if test -z "$_flag_debug"
         echo 'DEBUG activated!'
@@ -15,8 +15,8 @@ function new-git-repo
         set project_name $_flag_project
     end
     echo "DEBUG: project_name = $project_name"
-    if test -n "$_flag_host"
-        switch $_flag_host
+    if test -n "$_flag_provider"
+        switch $_flag_provider
             case "github"
                 echo "calling create_github_repo"
                 set response (_create_github_repo --project $project_name)
@@ -30,7 +30,7 @@ function new-git-repo
                 return 1
         end
     else
-        echo "You must provide a host to create repo on"
+        echo "You must provide a provider to create repo on"
         return 1
     end
     if test "$response" = "1"
