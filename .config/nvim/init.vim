@@ -75,6 +75,7 @@ Plug 'sebastianmarkow/deoplete-rust', {'for': 'rust'}
 Plug 'cespare/vim-toml', {'for': 'toml'}
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'chase/vim-ansible-yaml'
+Plug 'lambdalisue/suda.vim'
 
 call plug#end()
 
@@ -471,7 +472,8 @@ command! PlugLoadAll call plug#load(keys(g:plugs))
 if filereadable(glob("~/.config/nvim/local.vim"))
     source ~/.config/nvim/local.vim
 endif
-cnoremap w!! w !sudo tee > /dev/null %
+" cnoremap w!! w !sudo tee > /dev/null %
+cnoremap w!! SudaWrite
 set relativenumber
 
 " Easy block comment toggle
@@ -516,3 +518,11 @@ vmap <expr> <f28> XTermPasteBegin("c")
 cmap <f28> <nop>
 cmap <f29> <nop>
 
+" Function to source only if file exists
+function! SourceIfExists(file)
+    if filereadable(expand(a:file))
+        exe 'source' a:file
+    endif
+endfunction
+
+call SourceIfExists("~/.config/nvim/custom.vim")
