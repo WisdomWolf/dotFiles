@@ -15,4 +15,5 @@ function _create_github_repo
         -d name=$project_name)
     set ssh_url (echo $new_project | jq -r '.ssh_url')
     emit bg_notify_event (echo $new_project | jq -r '"\(.id)\t\(.name)\t\(.html_url)"')
+    echo $ssh_url
 end
