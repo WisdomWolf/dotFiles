@@ -103,4 +103,6 @@ end
 #    set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
 #    curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 #end
-starship init fish | source
+if type -q starship
+    starship init fish | source
+end
