@@ -5,8 +5,8 @@ function new-git-repo
     set -la options (fish_opt --short=p --long=project --required-val)
     set -la options (fish_opt --short=d --long=debug)
     argparse $options -- $argv
-    if test -z "$_flag_debug"
-        echo 'DEBUG activated!'
+    if test -n "$_flag_debug"
+        emit bg_notify_event 'DEBUG activated!'
         set -l
     end
     if test -z "$_flag_project"
@@ -18,13 +18,13 @@ function new-git-repo
     if test -n "$_flag_provider"
         switch $_flag_provider
             case "github"
-                echo "calling create_github_repo"
+                emit bg_notify_event "calling create_github_repo"
                 set response (_create_github_repo --project $project_name)
-                echo "response: $response"
+                emit bg_notify_event "response: $response"
             case "gitlab"
-                echo "calling create_gitlab repo"
+                emit bg_notify_event "calling create_gitlab repo"
                 set response (_create_gitlab_repo --project $project_name)
-                echo "response: $response"
+                emit bg_notify_event "response: $response"
             case '*'
                 echo "No config for $_flag_host exists"
                 return 1
@@ -39,11 +39,16 @@ function new-git-repo
     else
         set ssh_url $response
     end
-    read -p 'echo "Would you like to add this project as remote git repo? "' -n 1 -l add_git_repo
-    if test "$add_git_repo" = "y" -o "$add_git_repo" = "Y"
-        git remote add origin $ssh_url
-        echo "remote repo set to $ssh_url"
+    if test -n "$ssh_url"
+        read -p 'echo "Would you like to add this project as remote git repo? "' -n 1 -l add_git_repo
+        if test "$add_git_repo" = "y" -o "$add_git_repo" = "Y"
+            git remote add origin $ssh_url
+            emit bg_notify_event "remote repo set to $ssh_url"
+        else
+            echo "Not setting remote repo"
+        end
     else
-        echo "Not setting remote repo"
+        echo 'SSH URL is empty!'
+        return 1
     end
 end

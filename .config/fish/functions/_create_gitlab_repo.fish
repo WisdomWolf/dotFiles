@@ -7,7 +7,10 @@ function _create_gitlab_repo
         echo "GITLAB_TOKEN must be set first"
         return 1
     end
-    set -l new_project (curl --header "PRIVATE-TOKEN: $GITLAB_TOKEN" -s https://gitlab.com/api/v4/projects -d name=$project_name)
+    set -l new_project (curl -s \
+        --header "PRIVATE-TOKEN: $GITLAB_TOKEN" \
+        https://gitlab.com/api/v4/projects \
+        -d name=$project_name)
     set ssh_url (echo $new_project | jq -r '.ssh_url_to_repo')
     emit bg_notify_event (echo $new_project | jq -r '"\(.id)\t\(.name)\t\(.web_url)"')
     echo $ssh_url
