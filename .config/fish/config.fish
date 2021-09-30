@@ -58,9 +58,20 @@ else
     end
     ps -ef | grep $SSH_AGENT_PID | grep -v grep | grep ssh-agent >/dev/null
     if [ $status -eq 0 ]
+        if status --is-interactive
+            echo "testing identities" | ts >> ssh_agent.log
+        else
+            echo "skipping identity test" | ts >> ssh_agent.log
+        end
         test_identities
     else
-        start_agent
+#        start_agent
+        if status --is-interactive
+            echo "starting agent" | ts >> ~/ssh_agent.log
+            start_agent
+        else
+            echo "non-interactive session" | ts >> ~/ssh_agent.log
+        end
     end
 end
 
