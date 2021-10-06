@@ -1,4 +1,4 @@
-# Defined in /tmp/fish.aoxen1/setup-neovim-environments.fish @ line 1
+# Defined in /tmp/fish.DmbF7l/setup-neovim-environments.fish @ line 2
 function setup-neovim-environments
     pyenv update
     # Ensure nvim file exists
@@ -14,15 +14,18 @@ function setup-neovim-environments
             set suffix 3
         end
         # Create and activate venv
+        echo "Ensuring $env virtualenv exists"
         pyenv install --skip-existing $python_version
         pyenv virtualenv $python_version $env
         pyenv activate $env
         # Install pynvim package in venv
-        pip install -U pip
-        pip install pynvim
+        echo "Installing latest pynvim package in virtual environment"
+        pip install --upgrade pip
+        pip install --upgrade pynvim
         set nvim_path (pyenv which python)
         # Add variables pointing to venv path to custom.vim
-        echo "let g:python"$suffix"_host_prog = '$nvim_path'" >> ~/.config/nvim/custom.vim
+        echo "Adding virtualenv paths to custom.vim file"
+        echo "let g:python"$suffix"_host_prog = '$nvim_path'" | tee -a ~/.config/nvim/custom.vim
     end
     pip install flake8
     sudo ln -s (pyenv which flake8) ~/bin/flake8
