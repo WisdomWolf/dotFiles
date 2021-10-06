@@ -1,14 +1,15 @@
-# Defined in /tmp/fish.DmbF7l/setup-neovim-environments.fish @ line 2
+# Defined in /tmp/fish.Kdj9cu/setup-neovim-environments.fish @ line 2
 function setup-neovim-environments
     pyenv update
     # Ensure nvim file exists
     mkdir -p ~/.config/nvim
     touch ~/.config/nvim/custom.vim
     # Delete existing variables from custom.vim
-    sed -i -r 's/.*python3?_host_prog.*$//' ~/.config/nvim/custom.vim
+    sed -i -r '/.*python3?_host_prog.*$/d' ~/.config/nvim/custom.vim
     for env in neovim2 neovim3
         if test (string match -r '2' "$env")
             set python_version 2.7.18
+            set suffix ''
         else
             set python_version (pyenv-latest)
             set suffix 3
