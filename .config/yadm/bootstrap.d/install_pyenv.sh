@@ -5,4 +5,8 @@ script_dir=`dirname "$0"`
 bash $script_dir/install_pyenv_prereqs.sh
 
 # Install Pyenv
-curl https://pyenv.run | bash
+if [[ ! -d $HOME/.pyenv ]]; then
+    curl https://pyenv.run | bash
+else
+    echo "Pyenv appears to be installed already"
+fi
