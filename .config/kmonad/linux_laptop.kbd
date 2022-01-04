@@ -22,6 +22,7 @@
 
 
 (defalias
+    ;; Home row mods (Qwerty)
     met_a (tap-hold-next-release 200 a lmet)
     alt_s (tap-hold-next-release 200 s lalt)
     ctl_d (tap-hold-next-release 200 d lctl)
@@ -31,6 +32,20 @@
     ctl_k (tap-hold-next-release 200 k rctl)
     alt_l (tap-hold-next-release 200 l lalt)
     met_; (tap-hold-next-release 200 ; rmet)
+
+    ;; Home row mods (Colemak)
+    ;;met_a (tap-hold-next-release 200 a lmet)
+    alt_r (tap-hold-next-release 200 r lalt)
+    ctl_s (tap-hold-next-release 200 s lctl)
+    sft_t (tap-hold-next-release 200 t lsft)
+
+    sft_n (tap-hold-next-release 200 n rsft)
+    ctl_e (tap-hold-next-release 200 e rctl)
+    alt_i (tap-hold-next-release 200 i lalt)
+    met_o (tap-hold-next-release 200 o rmet)
+
+    ;; Generic Aliases
+    nav (layer-toggle navigation)
 )
 
 #| --------------------------------------------------------------------------
@@ -46,15 +61,20 @@
 
   -------------------------------------------------------------------------- |#
 
-(deflayer template
+(deflayer bases
   _         _       _       _       _       _       _       _       _       _       _       _       _
   _         _       _       _       _       _       _       _       _       _       _       _       _       _       _       _       _
   _         _       _       _       _       _       _       _       _       _       _       _       _       _       _       _       _
   _         @met_a  @alt_s  @ctl_d  @sft_f  _       _       @sft_j  @ctl_k  @alt_l  @met_;  _       _
   _         _       _       _       _       _       _       _       _       _       _       _                       _
-  _         _       _               _               _       _       _       _                               _       _       _
+  _         _       _               _               @nav    _       _       _                               _       _       _
 )
 
-(deflayer homerowmods
-    @met_a   @alt_s   @ctl_d   @sft_f   g   h   @sft_j   @ctl_k   @alt_l   @met_;
+(deflayer navigation
+  _         _       _       _       _       _       _       _       _       _       _       _       _
+  _         _       _       _       _       _       _       _       _       _       _       _       _       _       _       _       _
+  _         _       _       _       _       _       _       _       _       _       _       _       _       _       _       _       _
+  _         _       _       _       _       _       left    down    up      rght    _       _       _
+  _         _       _       _       _       _       _       _       _       _       _       _                       _
+  _         _       _               _               _       _       _       _                               _       _       _
 )
