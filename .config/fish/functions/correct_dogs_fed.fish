@@ -1,10 +1,10 @@
-# Defined in /tmp/fish.9pZqGL/correct_dogs_fed.fish @ line 2
+# Defined in /tmp/fish.nmnZ4g/correct_dogs_fed.fish @ line 2
 function correct_dogs_fed
 	if test (count $argv) -gt 0
         set date $argv[1]
     else
         echo 'setting date to default'
-        set date (bash -c "TZ='America/New_York' date \"+%Y/%m/%d %I:%M%p\"")
+        set date (TZ='America/New_York' date "+%m/%d/%y %I:%M%p")
     end
     if test -z "$MQTT_PASS"
         read -i -P "mqtt pass: " MQTT_PASS
