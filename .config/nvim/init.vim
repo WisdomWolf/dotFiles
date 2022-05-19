@@ -474,6 +474,7 @@ if filereadable(glob("~/.config/nvim/local.vim"))
 endif
 " cnoremap w!! w !sudo tee > /dev/null %
 cnoremap w!! SudaWrite
+command SW SudaWrite
 set relativenumber
 
 " Easy block comment toggle
@@ -517,6 +518,11 @@ imap <expr> <f28> XTermPasteBegin("")
 vmap <expr> <f28> XTermPasteBegin("c")
 cmap <f28> <nop>
 cmap <f29> <nop>
+
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<,space:␣
+noremap <F3> :set list!<CR>
+inoremap <F3> <C-o>:set list!<CR>
+cnoremap <F3> <C-c>:set list!<CR>
 
 " Function to source only if file exists
 function! SourceIfExists(file)
