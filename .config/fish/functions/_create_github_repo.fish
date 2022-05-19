@@ -12,7 +12,7 @@ function _create_github_repo
         -X POST \
         -H "Accept: application/vnd.github.v3+json" \
         https://api.github.com/user/repos \
-        -d name=$project_name)
+        -d "{\"name\":\"$project_name\"}")
     set ssh_url (echo $new_project | jq -r '.ssh_url')
     emit bg_notify_event (echo $new_project | jq -r '"\(.id)\t\(.name)\t\(.html_url)"')
     echo $ssh_url
