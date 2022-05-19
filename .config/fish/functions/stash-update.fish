@@ -1,8 +1,8 @@
-# Defined in /tmp/fish.w2kzi1/stash-update.fish @ line 2
+# Defined in /tmp/fish.lQzcJ9/stash-update.fish @ line 2
 function stash-update
+    stash-stop-all
     stash-clean
     stash-scan
-    cd stash_theporndb_scraper
-    python scrapeScenes.py -ro
+    ~/.pyenv/versions/stash_theporndb_scraper/bin/python ~/stash_theporndb_scraper/scrapeScenes.py -no
     stash-generate-metadata
 end
