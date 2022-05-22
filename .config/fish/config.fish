@@ -1,5 +1,6 @@
 bind -e \cs
 if status --is-login
+    and string match -rqv Darwin (uname)
     set PPID (echo (ps --pid %self -o ppid --no-headers) | xargs)
     if ps --pid $PPID | grep ssh
         or ps --pid $PPID | grep mosh
@@ -18,6 +19,16 @@ set -x SHELL (which fish)
 # content has to be in .config/fish/config.fish
 # if it does not exist, create the file
 setenv SSH_ENV $HOME/.ssh/environment
+
+function is-mac
+    if string match -rq Darwin (uname -a)
+        echo true
+        return 0
+    else
+        echo false
+        return 1
+    end
+end
 
 function start_agent
     echo "Initializing new SSH agent ..."
@@ -47,53 +58,54 @@ if test -n "$WSL_DISTRO_NAME"
 #     end
     set -Ux DISPLAY (cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
 end
-if [ -n "$SSH_AGENT_PID" ]
-    ps -ef | grep $SSH_AGENT_PID | grep ssh-agent >/dev/null
-    if [ $status -eq 0 ]
-        test_identities
-    end
-else
-    if [ -f $SSH_ENV ]
-        source $SSH_ENV >/dev/null
-    end
-    ps -ef | grep $SSH_AGENT_PID | grep -v grep | grep ssh-agent >/dev/null
-    if [ $status -eq 0 ]
-        if status --is-interactive
-            echo "testing identities" | ts >> ssh_agent.log
-        else
-            echo "skipping identity test" | ts >> ssh_agent.log
+if test (is-mac) = false
+    if [ -n "$SSH_AGENT_PID" ]
+        ps -ef | grep $SSH_AGENT_PID | grep ssh-agent >/dev/null
+        if [ $status -eq 0 ]
+            test_identities
         end
-        test_identities
     else
-#        start_agent
-        if status --is-interactive
-            echo "starting agent" | ts >> ~/ssh_agent.log
-            start_agent
+        if [ -f $SSH_ENV ]
+            source $SSH_ENV >/dev/null
+        end
+        ps -ef | grep $SSH_AGENT_PID | grep -v grep | grep ssh-agent >/dev/null
+        if [ $status -eq 0 ]
+            if status --is-interactive
+                echo "testing identities" | ts >> ssh_agent.log
+            else
+                echo "skipping identity test" | ts >> ssh_agent.log
+            end
+            test_identities
         else
-            echo "non-interactive session" | ts >> ~/ssh_agent.log
+    #        start_agent
+            if status --is-interactive
+                echo "starting agent" | ts >> ~/ssh_agent.log
+                start_agent
+            else
+                echo "non-interactive session" | ts >> ~/ssh_agent.log
+            end
         end
     end
 end
 
+# function test_identities
+#     ssh-add -l | grep "The agent has no identities" >/dev/null
+#     if [ $status -eq 0 ]
+#         ssh-add
+#         if [ $status -eq 2 ]
+#             start_agent
+#         end
+#     end
+# end
 
-function test_identities
-    ssh-add -l | grep "The agent has no identities" >/dev/null
-    if [ $status -eq 0 ]
-        ssh-add
-        if [ $status -eq 2 ]
-            start_agent
-        end
-    end
-end
 
-
-if test -e $HOME/.pyenv/bin/pyenv
+if test \( -e $HOME/.pyenv/bin/pyenv \) -o \( -e /usr/local/bin/pyenv \)
     if not contains "$HOME/.pyenv/bin" $fish_user_paths
-        set -x fish_user_paths $HOME/.pyenv/bin $fish_user_paths
+        set -Up fish_user_paths $HOME/.pyenv/bin
     end
-    status --is-interactive; and source (pyenv init --path | source)
+    status --is-interactive; and pyenv init --path | source
     status --is-interactive; and pyenv init - | source
-    status --is-interactive; and source (pyenv virtualenv-init -|psub)
+    status --is-interactive; and pyenv virtualenv-init - | source
 
     #pyenv-virtualenv init
     set -ga fish_user_paths '/usr/local/Cellar/pyenv-virtualenv/1.1.5/shims'
@@ -125,4 +137,9 @@ else
     if not contains "$HOME/.local/bin" $fish_user_paths
         set -Ua fish_user_paths $HOME/.local/bin
     end
+end
+
+if test -e ~/google-cloud-sdk/path.fish.inc
+    and not contains ~/google-cloud-sdk/bin $PATH
+    source ~/google-cloud-sdk/path.fish.inc
 end
