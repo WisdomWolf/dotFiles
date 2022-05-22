@@ -44,8 +44,14 @@
     alt_i (tap-hold-next-release 200 i lalt)
     met_o (tap-hold-next-release 200 o rmet)
 
-    ;; Generic Aliases
+    ;; Space Cadet shift
+    ls (tap-hold-next 200 \( lsft)
+    rs (tap-hold-next 200 \) rsft)
+
+    ;; Layer Aliases
     nav (layer-toggle navigation)
+    cmk (layer-switch colemak)
+    qwy (layer-switch qwerty)
 )
 
 #| --------------------------------------------------------------------------
@@ -61,19 +67,29 @@
 
   -------------------------------------------------------------------------- |#
 
-(deflayer bases
-  _         _       _       _       _       _       _       _       _       _       _       _       _
-  _         _       _       _       _       _       _       _       _       _       _       _       _       _       _       _       _
-  _         _       _       _       _       _       _       _       _       _       _       _       _       _       _       _       _
-  _         @met_a  @alt_s  @ctl_d  @sft_f  _       _       @sft_j  @ctl_k  @alt_l  @met_;  _       _
-  _         _       _       _       _       _       _       _       _       _       _       _                       _
-  _         _       _               _               @nav    _       _       _                               _       _       _
+(deflayer colemak
+ _         _       _       _       _       _       _       _       _       _       _       _       _
+ _         _       _       _       _       _       _       _       _       _       _       _       _       _       @qwy    _       _
+ _         q       w       f       p       g       j       l       u       y       ;       _       _       _       _       _       _
+ bspc      @met_a  @alt_r  @ctl_s  @sft_t  d       h       @sft_n  @ctl_e  @alt_i  @met_o  _       _
+ _         z       x       c       v       b       k       m       ,       .       /       _                       _
+ _         _       @nav            _               lalt    _       _       _                               _       _       _
 )
+
+(deflayer qwerty
+  _         _       _       _       _       _       _       _       _       _       _       _       _
+  _         _       _       _       _       _       _       _       _       _       _       _       _       _       @cmk    _       _
+  _         _       _       _       _       _       _       _       _       _       _       _       _       _       _       _       _
+  bspc      @met_a  @alt_s  @ctl_d  @sft_f  _       _       @sft_j  @ctl_k  @alt_l  @met_;  _       _
+  _         _       _       _       _       _       _       _       _       _       _       _                       _
+  _         _       @nav            _               lalt    _       _       _                               _       _       _
+)
+
 
 (deflayer navigation
   _         _       _       _       _       _       _       _       _       _       _       _       _
   _         _       _       _       _       _       _       _       _       _       _       _       _       _       _       _       _
-  _         _       _       _       _       _       _       _       _       _       _       _       _       _       _       _       _
+  A-tab     _       _       _       _       _       _       _       _       _       _       _       _       _       _       _       _
   _         _       _       _       _       _       left    down    up      rght    _       _       _
   _         _       _       _       _       _       _       _       _       _       _       _                       _
   _         _       _               _               _       _       _       _                               _       _       _
