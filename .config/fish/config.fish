@@ -117,3 +117,12 @@ end
 if type -q starship
     starship init fish | source
 end
+
+# Used by pipx
+if test (version $FISH_VERSION) -gt (version 3.2)
+    fish_add_path $HOME/.local/bin
+else
+    if not contains "$HOME/.local/bin" $fish_user_paths
+        set -Ua fish_user_paths $HOME/.local/bin
+    end
+end
