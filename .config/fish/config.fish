@@ -1,12 +1,14 @@
 bind -e \cs
 if status --is-login
+    # Exclude running on macOS
     and string match -rqv Darwin (uname)
     set PPID (echo (ps --pid %self -o ppid --no-headers) | xargs)
     if ps --pid $PPID | grep ssh
         or ps --pid $PPID | grep mosh
-        tmux has-session -t remote
-        and tmux attach-session -t remote
-        or tmux new-session -s remote
+        set SESSION_NAME "*"(hostname -s)
+        tmux has-session -t $SESSION_NAME
+        and tmux attach-session -t $SESSION_NAME
+        or tmux new-session -s $SESSION_NAME
         and kill %self
         echo "tmux failed to start; using plain fish shell"
     end
