@@ -1,3 +1,3 @@
 function which
-command which $argv || functions $argv
+    command which $argv 2>/dev/null || functions $argv
 end

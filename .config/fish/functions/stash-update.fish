@@ -3,6 +3,6 @@ function stash-update
     stash-stop-all
     stash-clean
     stash-scan
-    ~/.pyenv/versions/stash_theporndb_scraper/bin/python ~/stash_theporndb_scraper/scrapeScenes.py -no
+    stash-scrape
     stash-generate-metadata
 end
