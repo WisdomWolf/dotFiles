@@ -40,14 +40,15 @@ function create-db-user
                 set host (string split ':' $hostinfo)[1]
                 set port_and_db (string split ':' $hostinfo)[2]
                 set port (string split '/' $port_and_db)[1]
-                set admin_db (string split '/' $port_and_db)[2]
         
                 set mariadb_args -h $host -P $port -u $db_user -p$db_pass
         
-                mariadb $mariadb_args -e "CREATE DATABASE IF NOT EXISTS \`$dbname\`;"
-                mariadb $mariadb_args -e "CREATE USER IF NOT EXISTS '$username'@'%' IDENTIFIED BY '$password';"
-                mariadb $mariadb_args -e "GRANT ALL PRIVILEGES ON \`$dbname\`.* TO '$username'@'%';"
-                mariadb $mariadb_args -e "FLUSH PRIVILEGES;"
+                echo "
+CREATE DATABASE IF NOT EXISTS \`$dbname\`;
+CREATE USER IF NOT EXISTS '$username'@'%' IDENTIFIED BY '$password';
+GRANT ALL PRIVILEGES ON \`$dbname\`.* TO '$username'@'%';
+FLUSH PRIVILEGES;
+" | mariadb $mariadb_args
         
         else
                 echo "Error: unrecognized URI scheme, expected postgresql://, postgres://, mysql://, or mariadb://" >&2
