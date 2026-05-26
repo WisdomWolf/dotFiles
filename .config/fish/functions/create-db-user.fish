@@ -28,18 +28,34 @@ function create-db-user
         psql $_flag_uri -c "CREATE DATABASE $dbname;" 2>/dev/null
         psql $_flag_uri -c "CREATE USER $username WITH PASSWORD '$password';" 2>/dev/null
         psql $_flag_uri -c "GRANT ALL PRIVILEGES ON DATABASE $dbname TO $username;" 2>/dev/null
+        
     else if string match -q 'mysql://*' $_flag_uri; or string match -q 'mariadb://*' $_flag_uri
-        mysql $_flag_uri -e "CREATE DATABASE IF NOT EXISTS \`$dbname\`;"
-        mysql $_flag_uri -e "CREATE USER IF NOT EXISTS '$username'@'%' IDENTIFIED BY '$password';"
-        mysql $_flag_uri -e "GRANT ALL PRIVILEGES ON \`$dbname\`.* TO '$username'@'%';"
-        mysql $_flag_uri -e "FLUSH PRIVILEGES;"
-    else
-        echo "Error: unrecognized URI scheme, expected postgresql://, postgres://, mysql://, or mariadb://" >&2
-        return 1
-    end
+        # Parse URI into components since mariadb CLI doesn't accept URI directly
+                # URI format: mysql://user:password@host:port/dbname
+                set uri_stripped (string replace -r '^(mysql|mariadb)://' '' $_flag_uri)
+                set userinfo (string split '@' $uri_stripped)[1]
+                set hostinfo (string split '@' $uri_stripped)[2]
+                set db_user (string split ':' $userinfo)[1]
+                set db_pass (string split ':' $userinfo)[2]
+                set host (string split ':' $hostinfo)[1]
+                set port_and_db (string split ':' $hostinfo)[2]
+                set port (string split '/' $port_and_db)[1]
+                set admin_db (string split '/' $port_and_db)[2]
+        
+                set mariadb_args -h $host -P $port -u $db_user -p$db_pass
+        
+                mariadb $mariadb_args -e "CREATE DATABASE IF NOT EXISTS \`$dbname\`;"
+                mariadb $mariadb_args -e "CREATE USER IF NOT EXISTS '$username'@'%' IDENTIFIED BY '$password';"
+                mariadb $mariadb_args -e "GRANT ALL PRIVILEGES ON \`$dbname\`.* TO '$username'@'%';"
+                mariadb $mariadb_args -e "FLUSH PRIVILEGES;"
+        
+        else
+                echo "Error: unrecognized URI scheme, expected postgresql://, postgres://, mysql://, or mariadb://" >&2
+                return 1
+        end
     
-    echo "Done. Save these credentials:"
-    echo "  Username: $username"
-    echo "  Database: $dbname"
-    echo "  Password: $password"
+        echo "Done. Save these credentials:"
+        echo "  Username: $username"
+        echo "  Database: $dbname"
+        echo "  Password: $password"
 end
