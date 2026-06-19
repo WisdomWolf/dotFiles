@@ -1,6 +1,6 @@
 # Defined in - @ line 2
 function ld --description 'list directories only'
-	if count $argv >0
+	if count $argv > /dev/null
         set dirs $argv
     else
         set dirs */
