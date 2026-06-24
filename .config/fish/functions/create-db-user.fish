@@ -66,6 +66,7 @@ function create-db-user
         psql $pg_uri -c "CREATE DATABASE $dbname;" 2>/dev/null
         psql $pg_uri -c "CREATE USER $username WITH PASSWORD '$password';" 2>/dev/null
         psql $pg_uri -c "GRANT ALL PRIVILEGES ON DATABASE $dbname TO $username;" 2>/dev/null
+        psql $pg_uri -c "GRANT CREATE ON SCHEMA public to $username;" 2>/dev/null
         
     else if string match -q 'mysql://*' $_flag_uri; or string match -q 'mariadb://*' $_flag_uri
         set db_tag mariadb
