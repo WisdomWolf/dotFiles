@@ -1,3 +1,3 @@
 function whatthecommit
-	curl -s whatthecommit.com/index.txt
+	curl -s https://whatthecommit.com/index.txt
 end
