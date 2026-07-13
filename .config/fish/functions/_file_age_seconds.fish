@@ -1,13 +1,11 @@
 function _file_age_seconds
     set filepath $argv[1]
-    
-    switch (uname)
-        case Linux
-            stat -c %Y $filepath
-        case Darwin
-            stat -f %m $filepath
-        case '*'
-            # Fallback — assume stale if we can't determine age
-                        echo 0
-        end
+
+    if stat --version >/dev/null 2>&1
+        # GNU stat (Linux, or Homebrew coreutils shadowing /usr/bin/stat on macOS)
+        stat -c %Y $filepath
+    else
+        # BSD stat (macOS default /usr/bin/stat, or other BSD-likes)
+        stat -f %m $filepath
+    end
 end
