@@ -43,7 +43,10 @@ function create-db-user
             set pg_uri $_flag_uri
         else
             set db_user $userinfo
-            set host (string split ':' $hostinfo)[1]
+            # hostinfo may be host, host:port, host/db, or host:port/db —
+            # strip any trailing /database before extracting the bare host.
+            set host_port (string split '/' $hostinfo)[1]
+            set host (string split ':' $host_port)[1]
 
             # Priority matches libpq's own resolution order: URI password (above)
             # > PGPASSWORD > ~/.pgpass > 1Password (last resort). If PGPASSWORD
