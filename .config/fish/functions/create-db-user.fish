@@ -66,8 +66,13 @@ function create-db-user
         psql $pg_uri -c "CREATE DATABASE $dbname;" 2>/dev/null
         psql $pg_uri -c "CREATE USER $username WITH PASSWORD '$password';" 2>/dev/null
         psql $pg_uri -c "GRANT ALL PRIVILEGES ON DATABASE $dbname TO $username;" 2>/dev/null
-        psql $pg_uri -c "GRANT USAGE ON SCHEMA public to $username;" 2>/dev/null
-        psql $pg_uri -c "GRANT CREATE ON SCHEMA public to $username;" 2>/dev/null
+
+        # Postgres 15+ revokes CREATE on the public schema from PUBLIC by default,
+        # so the schema-level grant must be run against the new database itself —
+        # running it over the admin connection (typically to `postgres`) is a no-op.
+        set pg_uri_base (string replace -r '^(postgresql://[^/]+).*$' '$1' $pg_uri)
+        set pg_uri_newdb "$pg_uri_base/$dbname"
+        psql $pg_uri_newdb -c "GRANT ALL PRIVILEGES ON SCHEMA public TO $username;" 2>/dev/null
         
     else if string match -q 'mysql://*' $_flag_uri; or string match -q 'mariadb://*' $_flag_uri
         set db_tag mariadb
