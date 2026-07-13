@@ -42,16 +42,53 @@ function create-db-user
             # Password in URI — use as-is
             set pg_uri $_flag_uri
         else
-            # No password in URI — resolve from env or 1Password
+            set db_user $userinfo
+            set host (string split ':' $hostinfo)[1]
+
+            # Priority matches libpq's own resolution order: URI password (above)
+            # > PGPASSWORD > ~/.pgpass > 1Password (last resort). If PGPASSWORD
+            # is already set, psql will use it ahead of .pgpass regardless, so
+            # there's no need to scan .pgpass at all in that case.
             if not set -q PGPASSWORD
-                set admin_op_item (if set -q _flag_admin_op_item; echo $_flag_admin_op_item; else; echo $default_admin_op_item; end)
-                set -fx PGPASSWORD (op item get $admin_op_item --vault Homelab --fields password --reveal)
-                or begin
-                    echo "Error: could not retrieve admin password from 1Password item '$admin_op_item'" >&2
-                    return 1
+                # Check ~/.pgpass (or $PGPASSFILE) for a matching entry before
+                # falling back to 1Password.
+                # Format: hostname:port:database:username:password (colon-separated,
+                # any field may be "*"). This is a best-effort match on hostname +
+                # username only — port/database are commonly wildcarded in a
+                # homelab admin entry and aren't reliably knowable from the URI
+                # alone, and pgpass supports backslash-escaped colons within a
+                # field which a naive split won't handle correctly.
+                set pgpass_file (if set -q PGPASSFILE; echo $PGPASSFILE; else; echo "$HOME/.pgpass"; end)
+                set has_pgpass_entry 0
+                if test -f $pgpass_file
+                    while read -l line
+                        if test -z "$line"; or string match -q '#*' $line
+                            continue
+                        end
+                        set fields (string split ':' $line)
+                        if test (count $fields) -ge 5
+                            set pgp_host $fields[1]
+                            set pgp_user $fields[4]
+                            if begin; test "$pgp_host" = '*'; or test "$pgp_host" = "$host"; end
+                                and begin; test "$pgp_user" = '*'; or test "$pgp_user" = "$db_user"; end
+                                set has_pgpass_entry 1
+                                break
+                            end
+                        end
+                    end < $pgpass_file
+                end
+
+                if test $has_pgpass_entry -eq 1
+                    echo "Using password from $pgpass_file for '$db_user'@'$host'"
+                else
+                    set admin_op_item (if set -q _flag_admin_op_item; echo $_flag_admin_op_item; else; echo $default_admin_op_item; end)
+                    set -fx PGPASSWORD (op item get $admin_op_item --vault Homelab --fields password --reveal)
+                    or begin
+                        echo "Error: could not retrieve admin password from 1Password item '$admin_op_item'" >&2
+                        return 1
+                    end
                 end
             end
-            set db_user $userinfo
             set pg_uri "postgresql://$db_user@$hostinfo"
         end
         
@@ -62,17 +99,25 @@ function create-db-user
         end
         
         set password (if set -q _flag_password; echo $_flag_password; else; generate-passphrase; end)
-        
-        psql $pg_uri -c "CREATE DATABASE $dbname;" 2>/dev/null
-        psql $pg_uri -c "CREATE USER $username WITH PASSWORD '$password';" 2>/dev/null
-        psql $pg_uri -c "GRANT ALL PRIVILEGES ON DATABASE $dbname TO $username;" 2>/dev/null
 
-        # Postgres 15+ revokes CREATE on the public schema from PUBLIC by default,
-        # so the schema-level grant must be run against the new database itself —
-        # running it over the admin connection (typically to `postgres`) is a no-op.
-        set pg_uri_base (string replace -r '^(postgresql://[^/]+).*$' '$1' $pg_uri)
-        set pg_uri_newdb "$pg_uri_base/$dbname"
-        psql $pg_uri_newdb -c "GRANT ALL PRIVILEGES ON SCHEMA public TO $username;" 2>/dev/null
+        # Only skip CREATE DATABASE if it already exists (e.g. adding another
+        # user to a shared database) — everything else should fail loudly.
+        set db_exists (psql $pg_uri -tAc "SELECT 1 FROM pg_database WHERE datname='$dbname';" | string trim)
+
+        set pg_commands
+        if test "$db_exists" != 1
+            set -a pg_commands -c "CREATE DATABASE $dbname;"
+        end
+        set -a pg_commands \
+            -c "CREATE USER $username WITH PASSWORD '$password';" \
+            -c "GRANT ALL PRIVILEGES ON DATABASE $dbname TO $username;" \
+            -c "\c $dbname" \
+            -c "GRANT ALL PRIVILEGES ON SCHEMA public TO $username;"
+
+        if not psql -v ON_ERROR_STOP=1 $pg_uri $pg_commands
+            echo "Error: failed to provision database/user in PostgreSQL (see output above)" >&2
+            return 1
+        end
         
     else if string match -q 'mysql://*' $_flag_uri; or string match -q 'mariadb://*' $_flag_uri
         set db_tag mariadb
